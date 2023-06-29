@@ -1,18 +1,24 @@
+import React , { useState } from 'react'
 import  './App.css';
 
 function App() {
+  const [state, setState] = useState(1)
+  console.log('render parent');
   return (
     <div className='container yellow'>
       <h2>Props and local state management</h2>
       <h4>Parent</h4>
-      <ChildComponent />
+      <span>state is: <b>{state}</b></span>
+      <button onClick={() => setState(prev => prev += 1)}>change state</button>
+      <ChildComponent cbg='white' />
     </div>
   );
 }
 
 export default App;
 
-const ChildComponent = () => {
+const ChildComponent = ({cbg}) => {
+  console.log('render child');
   return (
     <div 
       style={{
@@ -22,16 +28,17 @@ const ChildComponent = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        background: 'white'
+        background: cbg
         }}
       >
       <h4>Child</h4>
-      <GrandChildComponent />
+      <GrandChildComponent gbg='yellow' />
     </div>
   )
 }
 
-const GrandChildComponent = () => {
+const GrandChildComponent = ({gbg}) => {
+  console.log('render grand child');
   return (
     <div
     style={{
@@ -41,18 +48,19 @@ const GrandChildComponent = () => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      background: 'yellow',
+      background: gbg,
       padding: '20px',
       }}
     >
       <h4>Grand Child</h4>
-      <DescendantComponent bg={'#83f483'}/>
-      <DescendantComponent bg={'#ff9898'}/>
+      <DescendantComponent dbg={'#83f483'}/>
+      <DescendantComponent dbg={'#ff9898'}/>
     </div>
   )
 }
 
-const DescendantComponent = ({bg}) => {
+const DescendantComponent = ({dbg}) => {
+  console.log('render descendant');
   return (
     <div
     style={{
@@ -62,7 +70,7 @@ const DescendantComponent = ({bg}) => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      background: bg
+      background: dbg
       }}
     >
       <h4>Descendant Child</h4>
