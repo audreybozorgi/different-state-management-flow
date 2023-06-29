@@ -18,6 +18,7 @@ function App() {
 export default App;
 
 const ChildComponent = ({cbg}) => {
+  const [state, setState] = useState(1)
   console.log('render child');
   return (
     <div 
@@ -32,12 +33,17 @@ const ChildComponent = ({cbg}) => {
         }}
       >
       <h4>Child</h4>
+      <span>state is: <b>{state}</b></span>
+      <button onClick={() => setState(prev => prev += 1)}>change state</button>
+
       <GrandChildComponent gbg='yellow' />
     </div>
   )
 }
 
 const GrandChildComponent = ({gbg}) => {
+  const [state, setState] = useState(1)
+
   console.log('render grand child');
   return (
     <div
@@ -53,6 +59,8 @@ const GrandChildComponent = ({gbg}) => {
       }}
     >
       <h4>Grand Child</h4>
+      <span>state is: <b>{state}</b></span>
+      <button onClick={() => setState(prev => prev += 1)}>change state</button>
       <DescendantComponent dbg={'#83f483'}/>
       <DescendantComponent dbg={'#ff9898'}/>
     </div>
@@ -60,6 +68,7 @@ const GrandChildComponent = ({gbg}) => {
 }
 
 const DescendantComponent = ({dbg}) => {
+  const [state, setState] = useState(1)
   console.log('render descendant');
   return (
     <div
@@ -73,6 +82,8 @@ const DescendantComponent = ({dbg}) => {
       background: dbg
       }}
     >
+      <span>state is: <b>{state}</b></span>
+      <button onClick={() => setState(prev => prev += 1)}>change state</button>
       <h4>Descendant Child</h4>
     </div>
   )
