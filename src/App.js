@@ -10,14 +10,18 @@ function App() {
       <h4>Parent</h4>
       <span>state is: <b>{state}</b></span>
       <button onClick={() => setState(prev => prev += 1)}>change state</button>
-      <ChildComponent cbg='white' />
+      <ChildComponent 
+        cbg='white' 
+        rootState={state}
+        setRootState={setState}
+      />
     </div>
   );
 }
 
 export default App;
 
-const ChildComponent = ({cbg}) => {
+const ChildComponent = ({cbg, rootState, setRootState}) => {
   const [state, setState] = useState(1)
   console.log('render child');
   return (
@@ -34,14 +38,18 @@ const ChildComponent = ({cbg}) => {
       >
       <h4>Child</h4>
       <span>state is: <b>{state}</b></span>
+      <span>root state is: <b>{rootState}</b></span>
       <button onClick={() => setState(prev => prev += 1)}>change state</button>
-
-      <GrandChildComponent gbg='yellow' />
+      <GrandChildComponent 
+        gbg='yellow' 
+        rootState={rootState}
+        setRootState={setRootState}
+      />
     </div>
   )
 }
 
-const GrandChildComponent = ({gbg}) => {
+const GrandChildComponent = ({gbg, rootState, setRootState}) => {
   const [state, setState] = useState(1)
 
   console.log('render grand child');
@@ -61,13 +69,21 @@ const GrandChildComponent = ({gbg}) => {
       <h4>Grand Child</h4>
       <span>state is: <b>{state}</b></span>
       <button onClick={() => setState(prev => prev += 1)}>change state</button>
-      <DescendantComponent dbg={'#83f483'}/>
-      <DescendantComponent dbg={'#ff9898'}/>
+      <DescendantComponent 
+        dbg={'#83f483'}
+        rootState={rootState}
+        setRootState={setRootState}
+      />
+      <DescendantComponent 
+        dbg={'#ff9898'}
+        rootState={rootState}
+        setRootState={setRootState}
+      />
     </div>
   )
 }
 
-const DescendantComponent = ({dbg}) => {
+const DescendantComponent = ({dbg, rootState, setRootState}) => {
   const [state, setState] = useState(1)
   console.log('render descendant');
   return (
@@ -83,7 +99,9 @@ const DescendantComponent = ({dbg}) => {
       }}
     >
       <span>state is: <b>{state}</b></span>
+      <span>root state is: <b>{rootState}</b></span>
       <button onClick={() => setState(prev => prev += 1)}>change state</button>
+      <button onClick={() => setRootState(prev => prev += 1)}>change root state</button>
       <h4>Descendant Child</h4>
     </div>
   )
