@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import './App.css';
 
+const appContext = createContext()
+console.log();
 function App2() {
   return (
     <div style={{background: '#eee', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
