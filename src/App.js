@@ -3,7 +3,7 @@ import  './App.css';
 
 function App() {
   const [state, setState] = useState(1)
-  console.log('render parent');
+  // console.log('render parent');
   return (
     <div className='container child'>
       <h2>Props and local state management</h2>
@@ -25,7 +25,7 @@ export default App;
 
 const ChildComponent = ({cbg, rootState, setRootState}) => {
   const [state, setState] = useState(1)
-  console.log('render child');
+  // console.log('render child');
   return (
     <div 
       style={{
@@ -56,7 +56,7 @@ const ChildComponent = ({cbg, rootState, setRootState}) => {
 const GrandChildComponent = ({gbg, rootState, setRootState}) => {
   const [state, setState] = useState(1)
 
-  console.log('render grand child');
+  // console.log('render grand child');
   return (
     <div
     style={{
@@ -91,7 +91,7 @@ const GrandChildComponent = ({gbg, rootState, setRootState}) => {
 
 const DescendantComponent = ({dbg, rootState, setRootState}) => {
   const [state, setState] = useState(1)
-  console.log('render descendant');
+  // console.log('render descendant');
 
   return (
     <div

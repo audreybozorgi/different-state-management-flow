@@ -1,11 +1,9 @@
-import { useState, createContext } from 'react'
+import { useState } from 'react'
 import './App.css';
 
-const appContext = createContext()
-console.log();
 function App2() {
   return (
-    <div style={{background: '#eee', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+    <div style={{ width: '100vw', height: '100vh', background: '#eee', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
       App 2 with context api
       <ChildComponent cbg='lightblue' />
     </div>
@@ -13,7 +11,6 @@ function App2() {
 }
 
 export default App2;
-
 
 const ChildComponent = ({cbg}) => {
   const [state, setState] = useState(1)
@@ -77,6 +74,8 @@ const GrandChildComponent = ({gbg}) => {
 
 const DescendantComponent = ({dbg}) => {
   const [state, setState] = useState(0)
+
+  console.log('render descendant');
   return (
     <div
     style={{

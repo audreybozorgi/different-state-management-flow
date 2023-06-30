@@ -28,15 +28,10 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <button id="local" onclick="handleClick('local')">select props and local state management</button>
-    <button id="context" onclick="handleClick('context')">select context api</button>
-    <button id="zustand" onclick="handleClick('zustand')">select zustand</button>
-    <button id="redux" onclick="handleClick('redux')">select redux</button>
-
-    <div id="root" style="display: none;"></div>
-    <div id="root2" style="display: none;"></div>
-    <div id="root3" style="display: none;"></div>
-    <div id="root4" style="display: none;"></div>
+    <div id="root"></div>
+    <div id="root2"></div>
+    <div id="root3"></div>
+    <div id="root4"></div>
     <!-- <div id='entry-point'></div> -->
     <!--
       This HTML file is a template.
@@ -49,35 +44,4 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
-  <script>
-    const handleClick = (type) => {
-      switch (type) {
-        case 'local':
-          document.getElementById('root').style.display = 'flex'
-          document.getElementById('root2').style.display = 'none'
-          document.getElementById('root3').style.display = 'none'
-          document.getElementById('root4').style.display = 'none'
-          break;
-        case 'context':
-          document.getElementById('root').style.display = 'none'
-          document.getElementById('root2').style.display = 'flex'
-          document.getElementById('root3').style.display = 'none'
-          document.getElementById('root4').style.display = 'none'
-          break;
-        case 'zustand':
-          document.getElementById('root').style.display = 'none'
-          document.getElementById('root2').style.display = 'none'
-          document.getElementById('root3').style.display = 'flex'
-          document.getElementById('root4').style.display = 'none'
-          break;
-        case 'redux':
-          document.getElementById('root').style.display = 'none'
-          document.getElementById('root2').style.display = 'none'
-          document.getElementById('root3').style.display = 'none'
-          document.getElementById('root4').style.display = 'flex'
-          break;
-      }
-    }  
-
-  </script>
 </html>
