@@ -19,7 +19,7 @@ const useMyContext = () => { // ### create context hook to get states in childre
   return context 
 }
 
-const Wrapper = () => { // ### entry root of drilling context state
+const Wrapper = () => { // ### entry root of drilling context state. configured for defining context scoop
   return (
     <AppProvider>
       <App2 />
@@ -36,7 +36,8 @@ function App2() {
 
   return (
     <div style={{ width: '100vw', height: '100vh', background: '#eee', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-      App 2 with context api
+      <h2>Context api</h2>
+      <h4>Parent</h4>
       <div>
         <button onClick={() => setCounter(prev => prev += 1)}>change state</button>
         <span style={{marginLeft: '5px'}}>root state is: <b>{counter}</b></span>
