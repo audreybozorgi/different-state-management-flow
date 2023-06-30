@@ -53,7 +53,7 @@ function App2() {
 const ChildComponent = ({cbg}) => {
   const [state, setState] = useState(1)
   const [ counter, setCounter ] = useMyContext()
-  console.log('render child');
+  // console.log('render child');
   return (
     <div 
       style={{
@@ -88,7 +88,7 @@ const GrandChildComponent = ({gbg}) => {
   const [state, setState] = useState(1)
   const [ counter, setCounter ] = useMyContext()
 
-  console.log('render grand child');
+  // console.log('render grand child');
   return (
     <div
     style={{
@@ -128,7 +128,7 @@ const DescendantComponent = ({dbg}) => {
   const [state, setState] = useState(0)
   const [ counter, setCounter ] = useMyContext()
 
-  console.log('render descendant');
+  // console.log('render descendant');
   return (
     <div
     style={{
