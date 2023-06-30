@@ -5,11 +5,13 @@ function App() {
   const [state, setState] = useState(1)
   console.log('render parent');
   return (
-    <div className='container yellow'>
+    <div className='container child'>
       <h2>Props and local state management</h2>
       <h4>Parent</h4>
-      <span>state is: <b>{state}</b></span>
-      <button onClick={() => setState(prev => prev += 1)}>change state</button>
+      <div>
+        <button onClick={() => setState(prev => prev += 1)}>change state</button>
+        <span style={{marginLeft: '5px'}}>local state is: <b>{state}</b></span>
+      </div>
       <ChildComponent 
         cbg='white' 
         rootState={state}
@@ -27,8 +29,8 @@ const ChildComponent = ({cbg, rootState, setRootState}) => {
   return (
     <div 
       style={{
-        width: '60%', 
-        height: '60%', 
+        width: '80%', 
+        height: '80%', 
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
@@ -37,9 +39,11 @@ const ChildComponent = ({cbg, rootState, setRootState}) => {
         }}
       >
       <h4>Child</h4>
-      <span>state is: <b>{state}</b></span>
+      <div>
+        <button onClick={() => setState(prev => prev += 1)}>change state</button>
+        <span style={{marginLeft: '5px'}}>local state is: <b>{state}</b></span>
+      </div>
       <span>root state is: <b>{rootState}</b></span>
-      <button onClick={() => setState(prev => prev += 1)}>change state</button>
       <GrandChildComponent 
         gbg='yellow' 
         rootState={rootState}
@@ -56,8 +60,8 @@ const GrandChildComponent = ({gbg, rootState, setRootState}) => {
   return (
     <div
     style={{
-      width: '60%', 
-      height: '60%', 
+      width: '90%', 
+      height: '90%', 
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -67,8 +71,10 @@ const GrandChildComponent = ({gbg, rootState, setRootState}) => {
       }}
     >
       <h4>Grand Child</h4>
-      <span>state is: <b>{state}</b></span>
-      <button onClick={() => setState(prev => prev += 1)}>change state</button>
+      <div>
+        <button onClick={() => setState(prev => prev += 1)}>change state</button>
+        <span style={{marginLeft: '5px'}}> local state is: <b>{state}</b></span>
+      </div>
       <DescendantComponent 
         dbg={'#83f483'}
         rootState={rootState}
@@ -89,8 +95,8 @@ const DescendantComponent = ({dbg, rootState, setRootState}) => {
   return (
     <div
     style={{
-      width: '60%', 
-      height: '60%', 
+      width: '90%', 
+      height: '90%', 
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -98,11 +104,15 @@ const DescendantComponent = ({dbg, rootState, setRootState}) => {
       background: dbg
       }}
     >
-      <span>state is: <b>{state}</b></span>
-      <span>root state is: <b>{rootState}</b></span>
-      <button onClick={() => setState(prev => prev += 1)}>change state</button>
-      <button onClick={() => setRootState(prev => prev += 1)}>change root state</button>
       <h4>Descendant Child</h4>
+      <div>
+        <button onClick={() => setState(prev => prev += 1)}>change local state</button>
+        <span style={{marginLeft: '5px'}}>local state is: <b>{state}</b></span>
+      </div>
+      <div>
+        <button onClick={() => setRootState(prev => prev += 1)}>change root state</button>
+        <span style={{marginLeft: '5px'}}>root state is: <b>{rootState}</b></span>
+      </div>
     </div>
   )
 }

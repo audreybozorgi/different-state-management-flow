@@ -3,13 +3,12 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 .green{
   background: #b6ffed
 }
-.yellow{
+.child{
   background: #fbffce
 }
 .pink{
