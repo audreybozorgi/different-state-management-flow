@@ -1,4 +1,4 @@
-import React , { useState } from 'react'
+import React , { useEffect, useState } from 'react'
 import  './App.css';
 
 function App() {
@@ -92,6 +92,7 @@ const GrandChildComponent = ({gbg, rootState, setRootState}) => {
 const DescendantComponent = ({dbg, rootState, setRootState}) => {
   const [state, setState] = useState(1)
   console.log('render descendant');
+
   return (
     <div
     style={{
