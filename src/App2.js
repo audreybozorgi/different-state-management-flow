@@ -32,16 +32,16 @@ export default Wrapper;
 
 //Parent component ___________________________________________
 function App2() {
-  const [ counter, setCounter ] = useMyContext()
-
+  // const [ counter, setCounter ] = useMyContext()
+  console.log('render parent');
   return (
     <div style={{ width: '100vw', height: '100vh', background: '#eee', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
       <h2>Context api</h2>
       <h4>Parent</h4>
-      <div>
+      {/* <div>
         <button onClick={() => setCounter(prev => prev += 1)}>change state</button>
         <span style={{marginLeft: '5px'}}>root state is: <b>{counter}</b></span>
-      </div>
+      </div> */}
       <ChildComponent cbg='lightblue' />
     </div>
   );
@@ -52,9 +52,9 @@ function App2() {
 
 //child component ___________________________________________
 const ChildComponent = ({cbg}) => {
-  const [state, setState] = useState(1)
-  const [ counter, setCounter ] = useMyContext()
-  // console.log('render child');
+  const [state, setState] = useState(0)
+  // const [ counter, setCounter ] = useMyContext()
+  console.log('render child');
   return (
     <div 
       style={{
@@ -72,10 +72,10 @@ const ChildComponent = ({cbg}) => {
         <button onClick={() => setState(prev => prev += 1)}>change state</button>
         <span style={{marginLeft: '5px'}}>local state is: <b>{state}</b></span>
       </div>
-      <div>
+      {/* <div>
         <button onClick={() => setCounter(prev => prev += 1)}>change state</button>
         <span style={{marginLeft: '5px'}}>root state is: <b>{counter}</b></span>
-      </div>
+      </div> */}
       <GrandChildComponent 
         gbg='yellow' 
       />
@@ -86,10 +86,10 @@ const ChildComponent = ({cbg}) => {
 
 //grand child component ___________________________________________
 const GrandChildComponent = ({gbg}) => {
-  const [state, setState] = useState(1)
-  const [ counter, setCounter ] = useMyContext()
+  const [state, setState] = useState(0)
+  // const [ counter, setCounter ] = useMyContext()
 
-  // console.log('render grand child');
+  console.log('render grand child');
   return (
     <div
     style={{
@@ -108,10 +108,10 @@ const GrandChildComponent = ({gbg}) => {
         <button onClick={() => setState(prev => prev += 1)}>change state</button>
         <span style={{marginLeft: '5px'}}> local state is: <b>{state}</b></span>
       </div>
-      <div>
+      {/* <div>
         <button onClick={() => setCounter(prev => prev += 1)}>change state</button>
         <span style={{marginLeft: '5px'}}>root state is: <b>{counter}</b></span>
-      </div>
+      </div> */}
       <DescendantComponent 
         dbg={'#83f483'}
       />
@@ -129,7 +129,7 @@ const DescendantComponent = ({dbg}) => {
   const [state, setState] = useState(0)
   const [ counter, setCounter ] = useMyContext()
 
-  // console.log('render descendant');
+  console.log('render descendant');
   return (
     <div
     style={{
