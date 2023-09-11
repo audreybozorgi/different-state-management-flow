@@ -30,7 +30,6 @@ const Wrapper = () => { // ### entry root of drilling context state. configured 
 export default Wrapper;
 // my context configuration ___________________________________________
 
-
 //Parent component ___________________________________________
 function ContextAPI() {
   // const [ counter, setCounter ] = useMyContext()
