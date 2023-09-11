@@ -33,7 +33,7 @@ export default Wrapper;
 //Parent component ___________________________________________
 function App2() {
   // const [ counter, setCounter ] = useMyContext()
-  console.log('render parent');
+  // console.log('render parent');
   return (
     <div style={{ width: '100vw', height: '100vh', background: '#eee', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
       <h2>Context api</h2>
@@ -54,7 +54,7 @@ function App2() {
 const ChildComponent = ({cbg}) => {
   const [state, setState] = useState(0)
   // const [ counter, setCounter ] = useMyContext()
-  console.log('render child');
+  // console.log('render child');
   return (
     <div 
       style={{
@@ -89,7 +89,7 @@ const GrandChildComponent = ({gbg}) => {
   const [state, setState] = useState(0)
   // const [ counter, setCounter ] = useMyContext()
 
-  console.log('render grand child');
+  // console.log('render grand child');
   return (
     <div
     style={{
@@ -129,7 +129,7 @@ const DescendantComponent = ({dbg}) => {
   const [state, setState] = useState(0)
   const [ counter, setCounter ] = useMyContext()
 
-  console.log('render descendant');
+  // console.log('render descendant');
   return (
     <div
     style={{
