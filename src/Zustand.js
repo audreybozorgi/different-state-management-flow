@@ -32,7 +32,7 @@ function App3() {
   const setCounter = myZustandStore(function (state) {
     return state.setCounter;
   });
-  console.log("render parent");
+  // console.log("render parent");
 
   return (
     <div
@@ -79,7 +79,7 @@ const ChildComponent = ({ cbg }) => {
     return state.setAnotherCounter;
   });
 
-  console.log("render child");
+  // console.log("render child");
   return (
     <div
       style={{
@@ -115,7 +115,7 @@ const SiblingComponent = ({ cbg }) => {
   });
 
 
-  console.log("render sibling");
+  // console.log("render sibling");
   return (
     <div
       style={{
@@ -141,7 +141,7 @@ const SiblingComponent = ({ cbg }) => {
 
 //grand child component ___________________________________________
 const GrandChildComponent = ({ gbg }) => {
-  console.log("render grand child");
+  // console.log("render grand child");
   return (
     <div
       style={{
@@ -172,7 +172,7 @@ const DescendantComponent = ({ dbg }) => {
   const setCounter = myZustandStore(function (state) {
     return state.setCounter;
   });
-  console.log("render descendant");
+  // console.log("render descendant");
   return (
     <div
       style={{

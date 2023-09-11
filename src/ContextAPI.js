@@ -5,9 +5,10 @@ import './App.css';
 const AppContext = createContext() // ### create context Api using react API
 const AppProvider = ({ children }) => { // ### create context Provider and its state using react API
   const [counter, setCounter] = useState(0)
+  const [anotherCounter, setAnotherCounter] = useState(0)
   
   return (
-    <AppContext.Provider value={[ counter, setCounter ]}>
+    <AppContext.Provider value={[ counter, setCounter, anotherCounter, setAnotherCounter ]}>
       { children }
     </AppContext.Provider>
   )
@@ -22,7 +23,7 @@ const useMyContext = () => { // ### create context hook to get states in childre
 const Wrapper = () => { // ### entry root of drilling context state. configured for defining context scoop
   return (
     <AppProvider>
-      <App2 />
+      <ContextAPI />
     </AppProvider>
   )
 }
@@ -31,7 +32,7 @@ export default Wrapper;
 
 
 //Parent component ___________________________________________
-function App2() {
+function ContextAPI() {
   // const [ counter, setCounter ] = useMyContext()
   // console.log('render parent');
   return (
@@ -43,6 +44,7 @@ function App2() {
         <span style={{marginLeft: '5px'}}>root state is: <b>{counter}</b></span>
       </div> */}
       <ChildComponent cbg='lightblue' />
+      <SiblingComponent cbg='lightblue' />
     </div>
   );
 }
@@ -51,10 +53,33 @@ function App2() {
 
 
 //child component ___________________________________________
+const SiblingComponent = ({cbg}) => {
+  const [ anotherCounter, setAnotherCounter ] = useMyContext() //here we can see by changing another state. the Descendant children which is consuming state which has not been changed is updating, this means that when we update some state defined inside context api. that component get re render and all consumers of context api get re render, no matter if they are subscribing the updated state or another states they all will get re render.  
+  console.log('render sibling');
+  return (
+    <div 
+      style={{
+        width: '80%', 
+        height: '80%', 
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        background: cbg
+        }}
+      >
+      <h4>Child</h4>
+      <div>
+        <button onClick={() => setAnotherCounter(prev => prev += 1)}>change another state</button>
+        <span style={{marginLeft: '5px'}}>local state is: <b>{anotherCounter}</b></span>
+      </div>
+    </div>
+  )
+}
 const ChildComponent = ({cbg}) => {
   const [state, setState] = useState(0)
   // const [ counter, setCounter ] = useMyContext()
-  // console.log('render child');
+  console.log('render child');
   return (
     <div 
       style={{
@@ -89,7 +114,7 @@ const GrandChildComponent = ({gbg}) => {
   const [state, setState] = useState(0)
   // const [ counter, setCounter ] = useMyContext()
 
-  // console.log('render grand child');
+  console.log('render grand child');
   return (
     <div
     style={{
@@ -129,7 +154,7 @@ const DescendantComponent = ({dbg}) => {
   const [state, setState] = useState(0)
   const [ counter, setCounter ] = useMyContext()
 
-  // console.log('render descendant');
+  console.log('render descendant');
   return (
     <div
     style={{
