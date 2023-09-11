@@ -55,6 +55,7 @@ function App3() {
         </span>
       </div>
       <ChildComponent cbg="lightblue" />
+      <SiblingComponent cbg="lightgreen"/>
     </div>
   );
 }
@@ -103,6 +104,40 @@ const ChildComponent = ({ cbg }) => {
   );
 };
 //child component ___________________________________________
+
+const SiblingComponent = ({ cbg }) => {
+  // Note: we can see in zustand if we have two sibling component and each of them are consuming non related state or setStates inside same zustand store. on changing not consuming state or setState the component will not get re-render. 
+  const counter = myZustandStore(function (state) {
+    return state.counter;
+  });
+  const setCounter = myZustandStore(function (state) {
+    return state.setCounter;
+  });
+
+
+  console.log("render sibling");
+  return (
+    <div
+      style={{
+        width: "80%",
+        height: "80%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        background: cbg,
+      }}
+    >
+      <h4>Sibling</h4>
+      <div>
+        <button onClick={setCounter}>change another state</button>
+        <span style={{ marginLeft: "5px" }}>
+          counter in zustand is: <b>{counter}</b>
+        </span>
+      </div>
+    </div>
+  );
+};
 
 //grand child component ___________________________________________
 const GrandChildComponent = ({ gbg }) => {
